@@ -18,7 +18,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Print Time
-        run: echo "The current time on Windows is $(date /T)"
+        run: echo "The current time on Windows is $(powershell Get-Date -Format HH:mm:ss)"
 
   job-macos:
     name: macOS Job
