@@ -11,21 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print Time
-        run: echo "The current time on Linux is $(date +%T)"
+        run: echo "The current time on Linux is $(date)"
 
   job-windows:
     name: Windows Job
     runs-on: windows-latest
     steps:
       - name: Print Time
-        run: echo "The current time on Windows is $(powershell Get-Date -Format HH:mm:ss)"
+        run: echo "The current time on Windows is $(date)"
 
   job-macos:
     name: macOS Job
     runs-on: macos-latest
     steps:
       - name: Print Time
-        run: echo "The current time on macOS is $(date +%T)"
+        run: echo "The current time on macOS is $(date)"
 
   dependent-job:
     name: Dependent Job
