@@ -6,31 +6,15 @@ on:
       - main
 
 jobs:
-  job-linux:
-    name: Linux Job
+  sharing-data:
+    name: Sharing artifact
     runs-on: ubuntu-latest
     steps:
-      - name: Print Time
-        run: echo "The current time on Linux is $(date)"
-
-  job-windows:
-    name: Windows Job
-    runs-on: windows-latest
-    steps:
-      - name: Print Time
-        run: echo "The current time on Windows is $(date)"
-
-  job-macos:
-    name: macOS Job
-    runs-on: macos-latest
-    steps:
-      - name: Print Time
-        run: echo "The current time on macOS is $(date)"
-
-  dependent-job:
-    name: Dependent Job
-    runs-on: ubuntu-latest
-    needs: [job-linux, job-windows, job-macos]
-    steps:
-      - name: Print Message
-        run: echo "All three parallel jobs are complete!"
+      - name: Checkout
+        uses: actions/checkout@v3.5.2
+      - run: expr 1 + 1 > file.txt
+      - name: Upload output file
+        uses: actions/upload-artifact@v3
+        with:
+          name: output-file
+          path: file.txt
